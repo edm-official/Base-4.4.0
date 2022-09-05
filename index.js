@@ -61,14 +61,14 @@ const connectToWA = () => {
 			const isMe = botNumber.includes(senderNumber)
 			const isOwner = ownerNumber.includes(senderNumber) || isMe
 			
-			const reply = async(teks) => {
-				await conn.sendMessage(from, { text: teks }, { quoted: mek })
+			const reply = (teks) => {
+				conn.sendMessage(from, { text: teks }, { quoted: mek })
 			}
 			
 			switch (command) {
 
 case 'hola':
-reply(`Hola ${pushname} como estas? :D`)
+reply('Hola ' + pushname)
 break
 
 			}
