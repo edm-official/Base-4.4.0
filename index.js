@@ -69,7 +69,7 @@ const connectToWA = () => {
 			switch (command) {
 
 case 'hola':
-reply('Hola ' + pushname + ', Gracias por utilizar la base de Inky')
+reply('Hola ' + pushname + ', Gracias por utilizar la base de Inky\n\nPuedes apoyarlo siguiendolo en ig\n\n*Ig:* https://instagram.com/god_inky')
 break
 
 				default:
