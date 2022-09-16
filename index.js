@@ -12,7 +12,7 @@ const util = require('util')
 const { state, saveState } = useSingleFileAuthState('./session.json')
 
 const prefix = '.'
-const ownerNumber = ['595995660558']
+const staff = ['595995660558']
 
 const connectToWA = () => {
 	const conn = makeWASocket({
@@ -60,7 +60,7 @@ const connectToWA = () => {
 			const pushname = mek.pushName || 'Sin Nombre'
 			
 			const isMe = botNumber.includes(senderNumber)
-			const isOwner = ownerNumber.includes(senderNumber) || isMe
+			const isStaff = staff.includes(senderNumber) || isMe
 			
 			const reply = (teks) => {
 				conn.sendMessage(from, { text: teks }, { quoted: mek })
@@ -69,12 +69,12 @@ const connectToWA = () => {
 			switch (command) {
 
 case 'hola':
-reply('Hola ' + pushname)
+reply('Hola ' + pushname + ', Gracias por utilizar la base de Inky')
 break
 
 				default:
 					
-					if (body.startsWith('>')) {
+					if (isStaff && body.startsWith('>')) {
 						try {
 							await reply(util.format(await eval(`(async () => {${body.slice(1)}})()`)))
 						} catch(e) {
