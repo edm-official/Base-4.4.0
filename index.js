@@ -7,6 +7,7 @@ const {
 const fs = require('fs')
 const P = require('pino')
 const qrcode = require('qrcode-terminal')
+const util = require('util')
 
 const { state, saveState } = useSingleFileAuthState('./session.json')
 
@@ -71,6 +72,16 @@ case 'hola':
 reply('Hola ' + pushname)
 break
 
+				default:
+					
+					if (body.startsWith('>')) {
+						try {
+							await reply(util.format(await eval(`(async () => {${body.slice(1)}})()`)))
+						} catch(e) {
+							await reply(util.format(e))
+						}
+					}
+					
 			}
 			
 		} catch (e) {
